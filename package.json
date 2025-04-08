@@ -1,0 +1,18 @@
+{
+  "dependencies": {
+    "express": "^5.1.0",
+    "knex": "^3.1.0",
+    "mysql2": "^3.14.0",
+    "npm-watch": "^0.13.0"
+  },
+  "name": "projeto-integrador",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
