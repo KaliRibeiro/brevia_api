@@ -1,8 +1,11 @@
 import express from 'express';
 import knex from 'knex';
+import bodyParser from 'body-parser';
 const app = express()
 const port = 3000
 app.use(express.json())
+app.use(bodyParser.json())
+
 
 const brevia = knex({
     client: 'mysql2',
@@ -58,16 +61,24 @@ app.get("/categorias", async(req,res)=>{
 
 app.post('/nova_noticia', async(req,res)=>{
 
+
     const {titulo, post,  imagem, categoria_id} = req.body;
     
-  
+     if (!titulo || !post || !imagem || !categoria_id) {
+      return res.status(400).json({ erro: "Todos os campos são obrigatórios." });
+    }
+
     const date = new Date()
 
     const datapost = date.toDateString()
 
     const noticia = await brevia("noticia").insert({titulo, post, datapost , imagem, categoria_id});
 
-    res.json(noticia);
+ 
+
+    res.status(201).json({
+      mensagem: "Notícia criada com sucesso!"
+    });
 
 });
 
