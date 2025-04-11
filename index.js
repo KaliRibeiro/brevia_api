@@ -1,6 +1,7 @@
 import express from 'express';
 import knex from 'knex';
 import bodyParser from 'body-parser';
+
 const app = express()
 const port = 3000
 app.use(express.json())
@@ -72,7 +73,7 @@ app.post('/nova_noticia', async(req,res)=>{
 
     const datapost = date.toDateString()
 
-    const noticia = await brevia("noticia").insert({titulo, post, datapost , imagem, categoria_id});
+    await brevia("noticia").insert({titulo, post, datapost , imagem, categoria_id});
 
  
 
@@ -87,7 +88,9 @@ app.get("/noticias/:categoria_id", async(req,res)=>{
     
   const {categoria_id} = req.params;
   
-    const noticia = await brevia.select("*").from("noticia").where({categoria_id});
+    const noticia = await brevia('noticia').select("categoria.nome","noticia.categoria_id", "noticia.titulo", "noticia.post", "noticia.imagem","noticia.datapost"  )
+    .join("categoria", "categoria.id", "=", "noticia.categoria_id");
+
     res.json(noticia);
 });
 
