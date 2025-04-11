@@ -1,12 +1,13 @@
 import express from 'express';
 import knex from 'knex';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 
 const app = express()
 const port = 3000
 app.use(express.json())
 app.use(bodyParser.json())
-
+app.use(cors())
 
 const brevia = knex({
     client: 'mysql2',
