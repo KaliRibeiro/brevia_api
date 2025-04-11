@@ -89,7 +89,8 @@ app.get("/noticias/:categoria_id", async(req,res)=>{
   const {categoria_id} = req.params;
   
     const noticia = await brevia('noticia').select("categoria.nome","noticia.categoria_id", "noticia.titulo", "noticia.post", "noticia.imagem","noticia.datapost"  )
-    .join("categoria", "categoria.id", "=", "noticia.categoria_id");
+    .join("categoria", "categoria.id", "=", "noticia.categoria_id")
+    .where({categoria_id});
 
     res.json(noticia);
 });
