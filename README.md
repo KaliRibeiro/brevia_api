@@ -4,11 +4,14 @@ A proposta do Brevia é entregar notícias rápidas, relevantes e resumidas, org
 A aplicação foi construída com foco em performance, simplicidade e facilidade de manutenção.
 
 🚀 Tecnologias Utilizadas
+
 Node.js
 
 Express.js
 
-MySQL (via Sequelize ORM)
+MySQL
+
+Knex.js
 
 Insomnia (para testes e validação da API)
 
@@ -28,6 +31,7 @@ Esportes
 Tendências
 
 🔐 Administrador
+
 Autenticação
 
-Cadastro, edição e exclusão de notícias
+Cadastro de notícias 
